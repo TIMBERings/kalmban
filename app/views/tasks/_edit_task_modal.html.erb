@@ -1,0 +1,18 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button id="close_edit_task_modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 class="modal-title" id="edit_task_modal_label">Edit Task</h4>
+    </div>
+            <%= form_for(:task, url: {action: 'update', id: @task.id},:html => {:class => 'form-horizontal'}) do |f| %>
+
+    <div class="modal-body">
+        <%= render(partial: 'form', locals: {f: f}) %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+  </div>
+</div>

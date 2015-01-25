@@ -1,0 +1,9 @@
+<%= link_to('<< Back to Tasks', {controller: 'tasks', action: 'index'}) %>
+
+<h1>Create New Task</h1>
+
+<%= form_for(:task, url: {action: 'create'}) do |f| %>
+<%= render(partial: 'form', locals: {f: f}) %>
+
+    <%= f.submit 'Create Task', class: 'btn btn-default' %>
+  <%end%>

@@ -1,0 +1,7 @@
+$(document).ready( function() {
+	$("#edit_task_modal").html("<%= escape_javascript(render 'tasks/edit_task_modal') %>");
+	$("#edit_task_modal").modal('show');
+	// $("#close_edit_task_modal").click(function() {
+	// 	$("#edit_task_modal .modal-dialog").remove();
+	// });
+});

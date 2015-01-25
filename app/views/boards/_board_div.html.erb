@@ -1,0 +1,8 @@
+<div class="board well">
+  <a>Title: <%= link_to("#{board.title}", {controller: 'boards', action: 'show', id: board.id}) %></a><br/>
+  Description: <%= "#{board.description}" %> <br/>
+  Status: <%= board.open ? "Open" : "Closed" %> <br/>
+  <div style='text-align:right;'>
+    <%= link_to('Edit Board', {controller: 'boards', action: 'edit', id: board.id},  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#edit_board_modal', 'data-type' => "html"} ) %>    
+  </div>
+</div>

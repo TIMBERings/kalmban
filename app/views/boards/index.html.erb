@@ -1,0 +1,25 @@
+
+<% @page_title = "Boards" %>
+<div class="users show">
+  <p><%= pluralize(@boards.size, 'board') %> found.</p>
+  
+  <div class="board_group">
+      <% @boards.each_with_index do |board, index| %>
+
+  <%  if (index) % 4 == 0 %>
+    <div class="row">
+  <% end %>
+
+        
+        <div class="col-lg-3">
+          <%= render(partial: 'board_div', locals: {board: board}) %>
+        </div>
+  <% if (index) % 4 == 3 %>
+  </div>
+  <% end %>
+
+      <% end %>
+      </div>
+</div>
+</div>
+<div id="edit_board_modal" class="modal fade" role="dialog" aria-labelledby="edit_board_modal_label" aria-hidden="true" tabindex="-1"></div>

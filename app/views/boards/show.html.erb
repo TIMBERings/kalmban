@@ -1,0 +1,44 @@
+<h1><%= "#{@board.title}" %></h1>
+
+  <div style='text-align:right;'>
+    <%= link_to '+New Task', {controller: 'tasks', action: 'new'},  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#new_task_modal'}  %>    
+  </div>
+
+
+<p><%= "#{@board.description}" %></p>
+
+
+<div class='row'>
+  <div class='col-lg-4 status_column'><h3 class="status_title">To Do</h3>
+    <div class='status'>
+    <ul class="list-unstyled status_list">
+        <% @board.tasks.to_do.each do |task| %> 
+        <li><%= render(partial: 'task_div', locals: {task: task}) %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class='col-lg-4 status_column'><h3 class="status_title">In Progress</h3>
+    <div class='status'>
+      <ul class="list-unstyled status_list">
+        <% @board.tasks.in_progress.each do |task| %>
+        <li><%= render(partial: 'task_div', locals: {task: task}) %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='col-lg-4 status_column'><h3 class="status_title">Completed</h3>
+    <div class='status'>
+      <ul class="list-unstyled status_list">
+        <% @board.tasks.complete.each do |task| %>
+        <li><%= render(partial: 'task_div', locals: {task: task}) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="new_task_modal" class="modal fade" role="dialog" aria-labelledby="new_task_modal_label" aria-hidden="true" tabindex="-1"></div>
+<div id="edit_task_modal" class="modal fade" role="dialog" aria-labelledby="edit_task_modal_label" aria-hidden="true" tabindex="-1"></div>

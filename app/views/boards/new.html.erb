@@ -1,0 +1,9 @@
+<%= link_to('<< Back to Boards', {controller: 'boards', action: 'index'}) %>
+
+<h1>Create New Board</h1>
+
+<%= form_for(:board, url: {action: 'create'}) do |f| %>
+<%= render(partial: 'form', locals: {f: f}) %>
+
+    <%= f.submit 'Create Board', class: 'btn btn-default' %>
+  <%end%>

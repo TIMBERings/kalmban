@@ -13,7 +13,8 @@
  *= require_self
  */
 
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 #main {
 	padding: 15px;
@@ -24,17 +25,6 @@ body {
     padding-top: 45px; 
 
 }
-
-/*#edit_task_modal {
-    width: 650px;
-    height: 800px;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    margin-top: -25px;
-    margin-left: -200px;
-    overflow: auto; 
-}*/
 
 .status_list {
     background-color: #555;

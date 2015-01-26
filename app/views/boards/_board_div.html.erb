@@ -4,6 +4,10 @@
   Status: <%= board.open ? "Open" : "Closed" %> <br/>
   User: <%= board.user.name %>
   <div style='text-align:right;'>
-    <%= link_to('Edit Board', {controller: 'boards', action: 'edit', id: board.id},  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#edit_board_modal', 'data-type' => "html"} ) %>    
+   <%= link_to('Edit Board', {controller: 'boards', action: 'edit', id: board.id} , { remote: true,  'data-target' => '#edit_board_modal', class: 'btn btn-sm'} ) %>   
+
+
   </div>
+
+
 </div>

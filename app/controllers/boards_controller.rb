@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
 before_action :find_user
 
   def index
+    puts "IN INDEX"
     @page_title = 'Boards'
     if @user
       @boards = @user.boards
@@ -30,19 +31,29 @@ before_action :find_user
     end
   end
 
-  def edit
+  
+
+
+def edit
+    puts "IN EDIT ACTION"
     @board = Board.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       flash[:notice] = "Board #{@board.title} updated successfully."
-      redirect_to(action: 'show', id: @board.id)
+      redirect_to(action: 'index')
     else
       render('edit')
     end
   end
+
+
 
   def delete
     @board = Board.find(params[:id])

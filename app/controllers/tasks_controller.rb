@@ -16,7 +16,6 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     respond_to do |format|
-      format.html
       format.js
     end   
   end
@@ -36,7 +35,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-    end   
+    end
   end
 
   def update

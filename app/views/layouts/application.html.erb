@@ -2,12 +2,12 @@
 <html>
 <head>
   <title>Kalmban<%= " | #{@page_title}" if @page_title %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+ 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/darkly/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
+  
 
   <%= csrf_meta_tags %>
 </head>
@@ -40,8 +40,6 @@
                 <li><%= link_to('Create User',{controller: 'users', action: 'new'}) %></li>
           </ul>
         </li>
-
-
 
 
         <li>

@@ -1,26 +1,44 @@
-<% @page_title = "Tasks" %>
-   
-<h1>Tasks</h1>
+<h1><%= "#{@tasks.find(1).board.title}" %></h1>
 
-<table class="table table-striped table-hover">
-<thead>
-  <th>ID</th>
-  <th>Title</th>
-  <th>Status</th>
-  <th>Board</th>
-  <th>Actions</th>
-</thead>
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= "#{task.id}" %></td>
-    <td><%= "#{task.title}" %></td>
-    <td><%= "#{task.status}" %></td>
-    <td><%= "#{task.board.title}" %></td>
-    <td>     
-      <%= link_to('Show', user_board_task_path(task.board.user_id,task.board, task)) %> | 
-      <%= link_to('Edit', edit_user_board_task_path(task.board.user_id, task.board, task)) %> | 
-      <%= link_to('Delete', delete_user_board_task_path(task.board.user_id, task.board, task)) %> 
-    </td>
-  </tr>
-<% end %>
-</table>
+  <div style='text-align:right;'>
+    <%= link_to '+New Task', {controller: 'tasks', action: 'new'},  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#new_task_modal'}  %>    
+  </div>
+
+
+<p><%= "#{@board.description}" %></p>
+
+
+<div class='row'>
+  <div class='col-lg-4 status_column'><h3 class="status_title">To Do</h3>
+    <div class='status'>
+    <ul class="list-unstyled status_list">
+        <% @tasks.to_do.each do |task| %> 
+        <li><%= render(partial: 'task_div', locals: {task: task}) %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class='col-lg-4 status_column'><h3 class="status_title">In Progress</h3>
+    <div class='status'>
+      <ul class="list-unstyled status_list">
+        <% @tasks.in_progress.each do |task| %>
+        <li><%= render(partial: 'task_div', locals: {task: task}) %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='col-lg-4 status_column'><h3 class="status_title">Completed</h3>
+    <div class='status'>
+      <ul class="list-unstyled status_list">
+        <% @tasks.complete.each do |task| %>
+        <li><%= render(partial: 'task_div', locals: {task: task}) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="new_task_modal" class="modal fade" role="dialog" aria-labelledby="new_task_modal_label" aria-hidden="true" tabindex="-1"></div>
+<div id="edit_task_modal" class="modal fade" role="dialog" aria-labelledby="edit_task_modal_label" aria-hidden="true" tabindex="-1"></div>

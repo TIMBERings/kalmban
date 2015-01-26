@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     member do
       get :delete
     end
+  end
 
-    resources :boards do
+  resources :boards do
       member do
         get :delete
       end
@@ -38,7 +39,6 @@ Rails.application.routes.draw do
         end
       end
     end
-  end
 
 
   match ':controller(/:action(/:id))', :via => [:get, :post]

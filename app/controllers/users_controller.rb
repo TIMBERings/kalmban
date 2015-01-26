@@ -2,17 +2,17 @@ class UsersController < ApplicationController
 
 
 
-  # layout 'application'
+  layout 'application'
 
-  # #before_action :confirm_logged_in
+  #before_action :confirm_logged_in
 
-  # def index
-  #   @users = User.all
-  # end
+  def index
+    @users = User.all
+  end
 
-  # def show
-  #   @user = User.find(params[:id])
-  # end
+  def show
+    @user = User.find(params[:id])
+  end
 
   # def new
   #   @user = User.new
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   #     render('edit')
   #   end
   # end
-
+  # 
   # def delete
   #   @user = User.find(params[:id])
   # end
@@ -50,12 +50,5 @@ class UsersController < ApplicationController
   #   user = User.find(params[:id]).destroy
   #   flash[:notice] = "user #{user.username} is destroyed."
   #   redirect_to(action: 'index')
-  # end
-
-
-  # private
-  
-  # def user_params
-  #   params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
   # end
 end

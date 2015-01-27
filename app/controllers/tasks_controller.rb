@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     @task.board = @board
     if @task.save
       flash[:notice] = "Task '#{@task.title}' created successfully."
-      redirect_to action: :index
+      redirect_to board_tasks_path(@task.board)
     else
       render('new')
     end
@@ -53,7 +53,7 @@ class TasksController < ApplicationController
     @task.update_attributes(task_params)
     if @task.save
       flash[:notice] = "Task '#{@task.title}' updated successfully."
-      redirect_to action: :index
+      redirect_to board_tasks_path(@task.board)
     else
       render('edit')
     end
@@ -72,7 +72,7 @@ class TasksController < ApplicationController
   def destroy
     task = Task.find(params[:id]).destroy
     flash[:notice] = "Task '#{task.title}' deleted successfully."
-    redirect_to(action: 'index')
+      redirect_to board_tasks_path(task.board)
   end
 
   private

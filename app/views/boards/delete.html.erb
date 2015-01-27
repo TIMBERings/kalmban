@@ -1,7 +1,0 @@
-<%= link_to('<< Back to Boards', {controller: 'boards', action: 'index'}) %>
-
-<%= form_for(:board, :url => user_board_path(@board.user.id, @board.id), html: {method: :delete}) do %>
-  <p class='bg-warning' style="padding:10px;">This action is perminant, are you sure you want to delete this board? <%= "#{@board.title}" %></p>
-
-  <%= submit_tag('Delete Board', class: 'btn btn-default') %>
-<%end%>

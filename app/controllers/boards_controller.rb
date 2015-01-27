@@ -30,8 +30,8 @@ class BoardsController < ApplicationController
   end
 
 def edit
-    permission_to_board?
     @board = Board.find(params[:id])
+    permission_to_board?
     respond_to do |format|
       format.html
       format.js
@@ -53,6 +53,10 @@ def edit
   def delete
     @board = Board.find(params[:id])
     permission_to_board?
+      respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def destroy

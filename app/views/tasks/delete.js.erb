@@ -1,0 +1,4 @@
+$(document).ready( function() {
+	$("#delete_task_modal").html("<%= escape_javascript(render 'tasks/delete') %>");
+	$("#delete_task_modal").modal('show');
+});

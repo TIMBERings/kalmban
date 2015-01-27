@@ -1,0 +1,4 @@
+$(document).ready(function() {
+	$("#delete_board_modal").html("<%= escape_javascript(render 'boards/delete') %>");
+	$("#delete_board_modal").modal('show');	
+});

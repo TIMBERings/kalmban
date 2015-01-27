@@ -20,6 +20,7 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(board_params)
+    @board.user = current_user
     if @board.save
       flash[:notice] = "Board #{@board.title} created successfully."
       redirect_to(action: 'show', id: @board.id)

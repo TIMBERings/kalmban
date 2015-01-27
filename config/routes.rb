@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-    get 'boards/new_board' => 'baords#new_board', :as => :new_board
-    get 'boards/edit_board_modal' => 'boards#edit_board_modal', :as => :edit_board_modal
-
     get 'auth/:provider/callback', to: 'sessions#create'
     get 'auth/failure', to: redirect('/')
     get 'signout', to: 'sessions#destroy', as: 'signout'

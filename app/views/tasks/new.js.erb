@@ -1,8 +1,4 @@
 $(document).ready(function(){
-	$("#new_task_modal").html("<%= escape_javascript(render 'tasks/new_task_modal') %>");
-	$("#new_task_modal").show();
-
-	// $("#close_new_task_modal").click(function() {
-	// 	$("#new_task_modal .modal-dialog").remove();
-	// });
+	$("#new_task_modal").html("<%= escape_javascript(render 'tasks/new') %>");
+	$("#new_task_modal").modal('show');
 });

@@ -1,5 +1,5 @@
 <div class="board well">
-  <a>Title: <%= link_to("#{board.title}", {controller: 'boards', action: 'show', id: board.id}) %></a><br/>
+  <a>Title: <%= link_to("#{board.title}", board_tasks_path(board.id)) %></a><br/>
   Description: <%= "#{board.description}" %> <br/>
   Status: <%= board.open ? "Open" : "Closed" %> <br/>
   User: <%= board.user.name %>

@@ -1,7 +1,7 @@
 <h1><%= "#{@board.title}" %></h1>
 
   <div style='text-align:right;'>
-    <%= link_to '+New Task', {controller: 'tasks', action: 'new'},  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#new_task_modal'}  %>    
+    <%= link_to '+New Task', {controller: 'tasks', action: 'new'},  {:remote => true, 'data-target' => '#new_task_modal'}  %>    
   </div>
 
 
@@ -13,7 +13,7 @@
     <div class='status'>
     <ul class="list-unstyled status_list">
         <% @board.tasks.to_do.each do |task| %> 
-        <li><%= render(partial: 'task_div', locals: {task: task}) %> </li>
+        <li><%= render(partial: 'tasks/task_div', locals: {task: task}) %> </li>
         <% end %>
       </ul>
     </div>
@@ -23,7 +23,7 @@
     <div class='status'>
       <ul class="list-unstyled status_list">
         <% @board.tasks.in_progress.each do |task| %>
-        <li><%= render(partial: 'task_div', locals: {task: task}) %> </li>
+        <li><%= render(partial: 'tasks/task_div', locals: {task: task}) %> </li>
         <% end %>
       </ul>
     </div>
@@ -32,7 +32,7 @@
     <div class='status'>
       <ul class="list-unstyled status_list">
         <% @board.tasks.complete.each do |task| %>
-        <li><%= render(partial: 'task_div', locals: {task: task}) %></li>
+        <li><%= render(partial: 'tasks/task_div', locals: {task: task}) %></li>
         <% end %>
       </ul>
     </div>

@@ -1,4 +1,4 @@
-<h1><%= "#{@tasks.find(1).board.title}" %></h1>
+<h1><%= "#{@board.title}" %></h1>
 
   <div style='text-align:right;'>
     <%= link_to '+New Task', {controller: 'tasks', action: 'new'},  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#new_task_modal'}  %>    

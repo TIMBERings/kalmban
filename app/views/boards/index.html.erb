@@ -2,32 +2,25 @@
 <% @page_title = "Boards" %>
 
 <h1><%=@current_user.name%>'s Boards</h1>
-  <div style='text-align:right;'>
+<div style='text-align:right;'>
 
-<%= link_to '+New Board', new_board_path,  {:remote => true, 'data-target' => '#new_board_modal'}  %>
+  <%= link_to '+New Board', new_board_path,  {:remote => true, 'data-target' => '#new_board_modal'}  %>
 </div>
 <div class="users show">
   <p><%= pluralize(@boards.size, 'board') %> found.</p>
   
   <div class="board_group">
-      <% @boards.each_with_index do |board, index| %>
 
-  <%  if (index) % 4 == 0 %>
-    <div class="row">
-  <% end %>
-
-        
-        <div class="col-lg-3">
-          <%= render(partial: 'board_div', locals: {board: board}) %>
-        </div>
-  <% if (index) % 4 == 3 %>
-  </div>
-  <% end %>
-
+  <ul id='boards' class="no_bullets">
+      <% @boards.each do |board| %>
+        <%= content_tag_for(:li, board) do %> 
+          <%= link_to(board.title, board_path(board)) %>
+        <% end %>
       <% end %>
-      </div>
+  </ul>
+  </div>
 </div>
-</div>
+
 
 
 <div id="new_board_modal" class="modal fade" role="dialog" aria-labelledby="new_board_modal_label" aria-hidden="true"></div>

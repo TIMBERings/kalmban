@@ -1,20 +1,17 @@
 class BoardsController < ApplicationController
   layout 'application'
 
-before_action :find_user
+  before_action :current_user
 
   def index
     puts "IN INDEX"
     @page_title = 'Boards'
-    if @user
-      @boards = @user.boards
-    else
-      @boards = Board.all
-    end
+    @boards = @current_user.boards
   end
 
   def show
     @board = Board.find(params[:id])
+    permission_to_board?
   end
 
   def new
@@ -31,11 +28,8 @@ before_action :find_user
     end
   end
 
-  
-
-
 def edit
-    puts "IN EDIT ACTION"
+    permission_to_board?
     @board = Board.find(params[:id])
     respond_to do |format|
       format.html
@@ -57,6 +51,7 @@ def edit
 
   def delete
     @board = Board.find(params[:id])
+    permission_to_board?
   end
 
   def destroy
@@ -74,6 +69,10 @@ def edit
 
   def find_user
     @user = User.find(params[:user_id]) if params[:user_id]
+  end
+
+  def permission_to_board?
+    permission_denied if (!@board.nil?  && @board.user != @current_user)
   end
 
 end

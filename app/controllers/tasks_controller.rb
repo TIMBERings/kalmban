@@ -1,23 +1,31 @@
 class TasksController < ApplicationController
   before_action :find_board
+  before_action :current_user
 
   def index
-    if @board
       @tasks = @board.tasks
-    else
-      @tasks = Task.all
-    end
+      logger.debug "board.user = #{@board.user.id}"
+      logger.debug "current_user = #{@current_user.id}"
+      permission_denied if (@board.user != @current_user)
   end
 
   def show
     @task = Task.find(params[:id])
+    permission_to_task?
   end
 
   def new
-    @task = Task.new
-    respond_to do |format|
-      format.js
-    end   
+
+    if (!@board.nil?  && @board.user != @current_user)
+      permission_denied 
+    else
+      @task = Task.new
+
+      respond_to do |format|
+        format.html
+        format.js
+      end   
+    end
   end
 
   def create
@@ -32,9 +40,11 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.js
+    if permission_to_task?
+      respond_to do |format|
+        format.html
+        format.js
+      end   
     end
   end
 
@@ -51,6 +61,12 @@ class TasksController < ApplicationController
 
   def delete
     @task = Task.find(params[:id])
+    if permission_to_task?
+      respond_to do |format|
+        format.html
+        format.js
+      end   
+    end
   end
 
   def destroy
@@ -66,5 +82,14 @@ class TasksController < ApplicationController
 
   def find_board
     @board = Board.find(params[:board_id]) if params[:board_id]
+  end
+
+  def permission_to_task?
+    if (!@task.nil?  && @task.board.user != @current_user) 
+      permission_denied 
+      return false
+    else
+      return true
+    end
   end
 end

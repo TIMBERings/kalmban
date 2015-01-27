@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+
+
     get 'auth/:provider/callback', to: 'sessions#create'
     get 'auth/failure', to: redirect('/')
     get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
     root to: "home#show"
 
 
+
   resources :users do #, shallow: true do
     member do
       get :delete
@@ -17,6 +20,10 @@ Rails.application.routes.draw do
   end
 
   resources :boards do
+    collection do
+      post :sort
+    end
+
       member do
         get :delete
       end

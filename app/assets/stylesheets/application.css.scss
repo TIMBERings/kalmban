@@ -58,3 +58,9 @@ body {
 .alignright {
     float: right;
 }
+
+ul.no_bullets {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}

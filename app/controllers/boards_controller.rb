@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
   def index
     puts "IN INDEX"
     @page_title = 'Boards'
-    @boards = @current_user.boards
+    @boards = @current_user.boards.sorted
   end
 
   def show
@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
     @board.user = current_user
     if @board.save
       flash[:notice] = "Board #{@board.title} created successfully."
-      redirect_to(action: 'show', id: @board.id)
+      redirect_to(action: 'index')
     else
       render('new')
     end
@@ -64,6 +64,16 @@ def edit
     flash[:notice] = "Board #{board.title} is destroyed."
     redirect_to(action: 'index')
   end
+
+  def sort  
+    @boards = Board.all
+    @boards.each do |board|
+      board.position = params['board'].index(board.id.to_s) + 1
+      board.save
+    end
+
+    render :nothing => true
+  end 
 
 
   private

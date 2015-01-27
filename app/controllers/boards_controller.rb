@@ -1,19 +1,16 @@
 class BoardsController < ApplicationController
   layout 'application'
 
-before_action :find_user
+  before_action :current_user
 
   def index
     @page_title = 'Boards'
-    if @user
-      @boards = @user.boards
-    else
-      @boards = Board.all
-    end
+    @boards = @current_user.boards
   end
 
   def show
     @board = Board.find(params[:id])
+    permission_to_board?
   end
 
   def new
@@ -32,6 +29,7 @@ before_action :find_user
 
   def edit
     @board = Board.find(params[:id])
+    permission_to_board?
   end
 
   def update
@@ -46,6 +44,7 @@ before_action :find_user
 
   def delete
     @board = Board.find(params[:id])
+    permission_to_board?
   end
 
   def destroy
@@ -63,6 +62,10 @@ before_action :find_user
 
   def find_user
     @user = User.find(params[:user_id]) if params[:user_id]
+  end
+
+  def permission_to_board?
+    permission_denied if (!@board.nil?  && @board.user != @current_user)
   end
 
 end

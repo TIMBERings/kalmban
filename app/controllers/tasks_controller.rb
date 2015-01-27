@@ -15,7 +15,6 @@ class TasksController < ApplicationController
   end
 
   def new
-
     if (!@board.nil?  && @board.user != @current_user)
       permission_denied 
     else
@@ -30,9 +29,10 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.board = @board
     if @task.save
       flash[:notice] = "Task '#{@task.title}' created successfully."
-      redirect_to action: :show, id: @task.id
+      redirect_to action: :index
     else
       render('new')
     end
@@ -53,7 +53,7 @@ class TasksController < ApplicationController
     @task.update_attributes(task_params)
     if @task.save
       flash[:notice] = "Task '#{@task.title}' updated successfully."
-      redirect_to action: :show, id: @task.id
+      redirect_to action: :index
     else
       render('edit')
     end

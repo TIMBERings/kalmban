@@ -1,0 +1,4 @@
+$(document).ready(function() {
+	$("#new_board_modal").html("<%= escape_javascript(render 'boards/new') %>");
+	$("#new_board_modal").modal('show');	
+});

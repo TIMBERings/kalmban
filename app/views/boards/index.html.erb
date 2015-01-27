@@ -1,5 +1,8 @@
 
 <% @page_title = "Boards" %>
+
+<%= link_to 'Add Board', new_board_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+
 <div class="users show">
   <p><%= pluralize(@boards.size, 'board') %> found.</p>
   
@@ -22,4 +25,7 @@
       </div>
 </div>
 </div>
-<div id="edit_board_modal" class="modal fade" role="dialog" aria-labelledby="edit_board_modal_label" aria-hidden="true" tabindex="-1"></div>
+
+<div id="edit_board_modal" class="modal fade" role="dialog" aria-labelledby="edit_board_modal_label" aria-hidden="true"></div>
+
+

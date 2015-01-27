@@ -15,10 +15,12 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+
     if (!@board.nil?  && @board.user != @current_user)
       permission_denied 
     else
+      @task = Task.new
+
       respond_to do |format|
         format.html
         format.js
@@ -59,7 +61,12 @@ class TasksController < ApplicationController
 
   def delete
     @task = Task.find(params[:id])
-    permission_to_task?
+    if permission_to_task?
+      respond_to do |format|
+        format.html
+        format.js
+      end   
+    end
   end
 
   def destroy

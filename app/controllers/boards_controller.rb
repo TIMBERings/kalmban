@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
   before_action :current_user
 
   def index
+    puts "IN INDEX"
     @page_title = 'Boards'
     @boards = @current_user.boards
   end
@@ -27,20 +28,26 @@ class BoardsController < ApplicationController
     end
   end
 
-  def edit
-    @board = Board.find(params[:id])
+def edit
     permission_to_board?
+    @board = Board.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       flash[:notice] = "Board #{@board.title} updated successfully."
-      redirect_to(action: 'show', id: @board.id)
+      redirect_to(action: 'index')
     else
       render('edit')
     end
   end
+
+
 
   def delete
     @board = Board.find(params[:id])

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  Kalmban::Application.routes.draw do
+    get 'boards/new_board' => 'baords#new_board', :as => :new_board
+    get 'boards/edit_board_modal' => 'boards#edit_board_modal', :as => :edit_board_modal
+
     get 'auth/:provider/callback', to: 'sessions#create'
     get 'auth/failure', to: redirect('/')
     get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -9,18 +11,7 @@ Rails.application.routes.draw do
     resource :home, only: [:show]
 
     root to: "home#show"
-  end
 
-  get 'home/show'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get "tasks/edit" => 'tasks#edit', as: :edit_task
-  get "tasks/new" => 'tasks#new', as: :new_task
-  get "boards/edit" => 'boards#edit', as: :edit_board
-  get "boards/new" => 'boards#new', as: :new_board
 
   resources :users do #, shallow: true do
     member do

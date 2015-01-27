@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require_tree .
  */
 
 @import "bootstrap-sprockets";
@@ -26,31 +27,6 @@ body {
 
 }
 
-.status_list {
-    background-color: #555;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.task {
-    background-color: #303030;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-}
-
-.board {
-    background-color: #303030;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-}
-
-.board_group {
-    background-color: #555;
-    border-radius: 5px;
-    padding: 5px;
-}
 
 .alignleft {
     float: left;

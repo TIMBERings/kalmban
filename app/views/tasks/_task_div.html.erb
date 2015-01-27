@@ -1,11 +1,11 @@
 <div class="task well">
-  <a>Title: <%= "#{task.title}" %></a><br/>
+      <%= link_to('×', delete_board_task_path(task.board, task), {class: 'delete alignright', :remote => true, 'data-target' => '#delete_task_modal'})%>
+  <a class='alignleft'><%= "#{task.title}" %></a><br/>
   Description: <%= "#{task.description}" %> <br>
   Status: <%= "#{task.status}" %> <br>
   Due Date: <%= "#{task.due_date}" %> <br>
   Completed Date: <%= "#{task.completed_date}" %> <br>
   <div style='text-align:right;'>
-<%= link_to 'Edit', edit_board_task_path(task.board, task),  {:remote => true, 'data-target' => '#edit_task_modal'}  %>    </div>
-
-
+	<%= link_to 'Edit', edit_board_task_path(task.board, task),  {:remote => true, 'data-target' => '#edit_task_modal'}  %>    
+  </div>
 </div>

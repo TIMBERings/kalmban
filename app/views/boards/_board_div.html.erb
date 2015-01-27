@@ -1,5 +1,6 @@
 <div class="board well">
-  <a>Title: <%= link_to("#{board.title}", board_tasks_path(board.id)) %></a><br/>
+  <%= link_to('×', delete_board_path(board), {class: 'delete alignright', :remote => true, 'data-target' => '#delete_board_modal'})%>
+  <%= link_to("#{board.title}", board_tasks_path(board.id), {class: "alignleft"}) %><br/>
   Description: <%= "#{board.description}" %> <br/>
   Status: <%= board.open ? "Open" : "Closed" %> <br/>
   User: <%= board.user.name %>

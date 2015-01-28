@@ -6,7 +6,11 @@ class BoardsController < ApplicationController
   def index
     puts "IN INDEX"
     @page_title = 'Boards'
-    @boards = @current_user.boards.sorted
+    if @current_user
+      @boards = @current_user.boards.sorted
+    else
+      permission_denied
+    end
   end
 
   def show

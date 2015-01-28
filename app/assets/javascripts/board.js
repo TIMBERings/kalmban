@@ -6,19 +6,18 @@ $(document).ready(function() {
 
 // Sorting the list
 	$('#boards').sortable({
-		axis: 'y',
 		dropOnEmpty: false,
 		cursor: 'crosshair',
 		items: 'li',
 		opacity: 0.4,
 		scroll: true,
-		update: function(){
+		update: function(event, ui){
 			$.ajax({
 				type: 'post',
 				data: $('#boards').sortable('serialize'),
 				dataType: 'script',
 				complete: function(request){
-					$('#boards').effect('highlight');
+					ui.item.children('div').effect('highlight', {color: '#375a7f'}, 1500);
 				},
 				url: '/boards/sort'
 			})

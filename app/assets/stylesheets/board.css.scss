@@ -8,15 +8,28 @@
 // @gray-light:   lighten(#000, 46.7%); // #777
 // @gray-lighter: lighten(#000, 93.5%); // #eee
 
+
 .board {
     background-color: #303030;
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
+}
+
+.well {
+	margin-bottom: 0px !important;
 }
 
 .board_group {
     background-color: #555;
     border-radius: 5px;
     padding: 5px;
+    float: left;
+    width: 100%;
+    display:block;
+
+}
+
+ul#boards > li {
+	float: left;
+	width: 25%;
+	margin: 5px;
 }

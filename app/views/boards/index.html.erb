@@ -1,7 +1,7 @@
 
 <% @page_title = "Boards" %>
 
-<h1><%=@current_user.name%>'s Boards</h1>
+<h2><%=@current_user.name%>'s Boards</h2>
 <div style='text-align:right;'>
 
   <%= link_to '+New Board', new_board_path,  {:remote => true, 'data-target' => '#new_board_modal'}  %>

@@ -16,17 +16,33 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Coming+Soon);
+
+
+
+
+#header {
+	width: 80%;
+	margin: 0px 10% auto 10%;
+	float: left;
+	display: block;
+	position: relative;
+}
 
 #main {
-	padding: 15px;
+	margin: 25px 5% auto 5%;
 }
 
-body {
-    padding: 10px; 
-    padding-top: 45px; 
-
+* {
+	font-family: 'Coming Soon', cursive !important;
 }
 
+
+#sign_out {
+	position: absolute;
+	bottom: 25%;
+	right: 0;
+}
 
 .alignleft {
     float: left;
@@ -39,4 +55,10 @@ ul.no_bullets {
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+hr {
+	border: 1px solid !important;
+	width: 90%;
+	color: #375a7f;
 }

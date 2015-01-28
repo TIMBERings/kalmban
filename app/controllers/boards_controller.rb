@@ -66,8 +66,8 @@ def edit
   end
 
   def sort  
-    @boards = Board.all
-    @boards.each do |board|
+    params[:board].each do |id|
+      board = Board.find(id)
       board.position = params['board'].index(board.id.to_s) + 1
       board.save
     end

@@ -24,16 +24,19 @@ Rails.application.routes.draw do
       post :sort
     end
 
+    member do
+      get :delete
+    end
+
+    resources :tasks do
+      collection do
+        post :sort
+      end
       member do
         get :delete
       end
-
-      resources :tasks do
-        member do
-          get :delete
-        end
-      end
     end
+  end
 
 
   match ':controller(/:action(/:id))', :via => [:get, :post]

@@ -50,6 +50,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    puts "Params #{task_params}"
     @task.update_attributes(task_params)
     if @task.save
       flash[:notice] = "Task '#{@task.title}' updated successfully."
@@ -74,6 +75,17 @@ class TasksController < ApplicationController
     flash[:notice] = "Task '#{task.title}' deleted successfully."
       redirect_to board_tasks_path(task.board)
   end
+
+  def sort  
+    puts "Params #{params}"
+    params[:task].each do |id|
+      task = Task.find(id)
+      task.position = params['task'].index(task.id.to_s) + 1
+      task.save
+    end
+
+    render :nothing => true
+  end 
 
   private
   def task_params

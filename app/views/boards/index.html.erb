@@ -14,7 +14,7 @@
   <ul id='boards' class="no_bullets">
       <% @boards.each do |board| %>
         <%= content_tag_for(:li, board) do %> 
-          <%= link_to(board.title, board_path(board)) %>
+          <%= link_to(board.title, board_tasks_path(board)) %>
         <% end %>
       <% end %>
   </ul>

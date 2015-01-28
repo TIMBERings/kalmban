@@ -10,14 +10,13 @@
   <p><%= pluralize(@boards.size, 'board') %> found.</p>
   
   <div class="board_group">
-
-  <ul id='boards' class="no_bullets">
-      <% @boards.each do |board| %>
-        <%= content_tag_for(:li, board) do %> 
-          <%= link_to(board.title, board_tasks_path(board)) %>
+    <ul id='boards' class="no_bullets">
+        <% @boards.each do |board| %>
+          <%= content_tag_for(:li, board) do %> 
+            <%= render(partial: 'board_div', locals: {board: board}) %>
+          <% end %>
         <% end %>
-      <% end %>
-  </ul>
+    </ul>
   </div>
 </div>
 

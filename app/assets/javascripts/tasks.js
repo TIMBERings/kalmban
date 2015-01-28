@@ -1,42 +1,41 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-var task_id = "";
+
 $(document).ready(function() {	
-	$(".status_list").sortable({
+	$("#to_do_status, #in_progress_status, #completed_status").sortable({
 		connectWith: 'ul',	
 		scroll: false,		
 		revert: true,
 		opacity: 0.4,
 		scroll: true,
-		update: function(){
+
+		receive: function(event, ui){
+			$.ajax({
+				type: 'post',
+				data: {_method:'PUT',  task: {status: get_status($(ui.item.parent('.status_list')))}},
+				complete: function(request){},
+				url: 'tasks/' + ui.item.attr('id').split('_')[1]
+			}),
+
 			$.ajax({
 				type: 'post',
 				data: $(this).sortable('serialize'),
 				dataType: 'script',
 				complete: function(request){
-					$('.status_list').effect('highlight');
+					ui.item.children('div').effect('highlight', {color: '#375a7f'}, 1500);
 				},
 				url: 'tasks/sort'
 			})
-		},
-
-		receive: function(event, ui) {
-			$.ajax({
-				type: 'post',
-				data: {_method:'PUT',  task: {status: get_status($(this))}},
-				url: 'tasks/' + ui.item.attr('id').split('_')[1]
-			})
-			// alert(ui.item.html());
 		}
 	})
 });
 
 function get_status(element) {
-	if(element.attr('data-status') == "to_do") {
-		return "To Do";
-	}	else if(element.attr('data-status') == "in_progress") {
-		return "In Progress";
-	} else if(element.attr('data-status') == "complete") {
-		return "Complete";
-	}
+		return capitalize_every_word(element.attr('data-status').replace('_', ' '));
+}
+
+function capitalize_every_word(str) {
+	return str.replace(/\w\S*/g, function(txt){
+		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	});
 }

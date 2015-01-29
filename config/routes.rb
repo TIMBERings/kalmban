@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :boards do
+  resources :boards, except: [:show] do
     collection do
       post :sort
     end
@@ -37,9 +37,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
-
-  match ':controller(/:action(/:id))', :via => [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

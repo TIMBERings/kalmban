@@ -4,13 +4,8 @@ ruby '2.1.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc2'
 # Use mysql as the database for Active Record
-group :development, :test do
-  gem 'mysql2'
-end
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
+gem 'mysql2'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0'

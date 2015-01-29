@@ -2,3 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.sign_in {
+	margin: 10px;
+	width: 294px;
+	height: 60px;
+ 	background-image: url('/assets/White-signin_Long_base_20dp.png');   
+ 	display: block;
+ 	margin-left: auto;
+  margin-right: auto;
+}
+
+.sign_in:hover{
+  background-image: url('/assets/White-signin_Long_hover_20dp.png');
+  border: 2px white;
+ 	display: block; 	
+}
+
+.sign_in:active{
+	background-image: url('/assets/White-signin_Long_press_20dp.png');
+ 	display: block;
+}
+
+

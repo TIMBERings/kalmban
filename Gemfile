@@ -6,6 +6,9 @@ gem 'rails', '4.2.0.rc2'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
+group :production do
+  gem 'rails_12factor'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0'

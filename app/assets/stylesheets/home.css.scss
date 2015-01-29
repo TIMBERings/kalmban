@@ -3,13 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sign_in {
-	margin: 10px;
 	width: 294px;
 	height: 60px;
  	background-image: asset-url('White-signin_Long_base_20dp.png');   
  	display: block;
- 	margin-left: auto;
-  margin-right: auto;
+ 	margin: 10px auto 10px auto;
 }
 
 .sign_in:hover{

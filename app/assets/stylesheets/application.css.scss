@@ -62,3 +62,9 @@ hr {
 	width: 90%;
 	color: #375a7f;
 }
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -10,8 +10,16 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
-    permission_to_task?
+    if (!@board.nil?  && @board.user != @current_user)
+      permission_denied 
+    else
+      @task = Task.find(params[:id])
+
+      respond_to do |format|
+        format.html
+        format.js
+      end   
+    end
   end
 
   def new

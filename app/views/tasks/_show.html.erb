@@ -1,0 +1,25 @@
+
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 class="modal-title" id="new_task_modal_label"><%= @task.title %></h4>
+    </div>
+      	<div class="modal-body">
+		  	Description: <%= "#{@task.description}" %> <br>
+		  	Due Date: <%= "#{@task.due_date}" %> <br>
+		  	Completed Date: <%= "#{@task.completed_date}" %> <br>
+  
+		</div>      
+      	<div class="modal-footer">
+    		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      	<%= link_to('Edit', edit_board_task_path(@task.board, @task), {type: "button", class: "btn btn-default modal_link", :remote => true, 'data-target' => '#edit_task_modal'}) %>
+	      	<%= link_to('Delete', board_task_path(@task.board, @task), {type: "button", class: "btn btn-default modal_link", :remote => true, 'data-target' => '#delete_task_modal'}) %>
+      	</div>
+    </div>
+</div>
+
+
+
+

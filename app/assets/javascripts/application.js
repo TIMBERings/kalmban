@@ -22,3 +22,9 @@ window.setTimeout(function() {
         $(this).remove(); 
     });
 }, 3000);
+
+$(document).ready(function() {
+	$('.modal_link').click(function() {
+		$('.modal').modal('hide');
+	});
+});

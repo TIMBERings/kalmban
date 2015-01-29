@@ -1,0 +1,8 @@
+$(document).ready(function(){
+	$("#show_task_modal").html("<%= escape_javascript(render 'tasks/show') %>");
+	$("#show_task_modal").modal('show');
+
+	$('.modal_link').click(function() {
+		$('.modal').modal('hide');
+	});
+});

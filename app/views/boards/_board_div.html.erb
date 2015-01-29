@@ -1,11 +1,11 @@
 <div class="board well">
-  <%= link_to('×', delete_board_path(board), {class: 'delete alignright', :remote => true, 'data-target' => '#delete_board_modal'})%>
+  <%= link_to('×', delete_board_path(board), {class: 'delete alignright modal_link', :remote => true, 'data-target' => '#delete_board_modal'})%>
   <%= link_to("#{board.title}", board_tasks_path(board.id), {class: "alignleft"}) %><br/>
-  Description: <%= "#{board.description}" %> <br/>
+  <div class="description">Description: <%= "#{board.description}"%></div> <br/>
   Status: <%= board.open ? "Open" : "Closed" %> <br/>
   User: <%= board.user.name %>
   <div style='text-align:right;'>
-   <%= link_to('Edit Board', {controller: 'boards', action: 'edit', id: board.id} , { remote: true,  'data-target' => '#edit_board_modal', class: 'btn btn-sm'} ) %>   
+   <%= link_to('Edit Board', {controller: 'boards', action: 'edit', id: board.id} , { remote: true,  'data-target' => '#edit_board_modal', class: 'btn btn-sm modal_link'} ) %>   
 
 
   </div>

@@ -13,7 +13,7 @@
   
 		</div>      
       	<div class="modal-footer">
-    		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 	      	<%= link_to('Edit', edit_board_task_path(@task.board, @task), {type: "button", class: "btn btn-default modal_link", :remote => true, 'data-target' => '#edit_task_modal'}) %>
 	      	<%= link_to('Delete', board_task_path(@task.board, @task), {type: "button", class: "btn btn-default modal_link", :remote => true, 'data-target' => '#delete_task_modal'}) %>
       	</div>

@@ -30,7 +30,8 @@
   <div class="form-group">
     <%= f.label :message,  class: "col-sm-3 control-label" %>
       <div class="col-sm-9">
-        <%= f.text_area :message, :as => :text, :required => true %>
+          <%= f.text_area(:message, required: true, rows: '6', class: 'form-control') %>
+
       </div>
   </div>
 

@@ -39,7 +39,7 @@ GEM
     acts_as_list (0.3.0)
       activerecord (>= 3.0)
     arel (6.0.0)
-    bcrypt (3.1.9)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.1.0)
@@ -55,7 +55,7 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.8.0)
+    coffee-script-source (1.9.0)
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -94,6 +94,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.17)
+    newrelic_rpm (3.9.9.275)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
@@ -138,7 +139,7 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_serve_static_assets (0.0.3)
+    rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
     railties (4.2.0.rc2)
       actionpack (= 4.2.0.rc2)
@@ -204,6 +205,7 @@ DEPENDENCIES
   jquery-ui-rails
   mail_form
   mysql2
+  newrelic_rpm
   omniauth-google-oauth2
   rails (= 4.2.0.rc2)
   rails_12factor

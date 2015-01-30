@@ -75,4 +75,22 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'kalmban.com' }
+# ActionMailer Config
+# Setup for production - deliveries, no errors raised
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = false
+config.action_mailer.default :charset => "utf-8"
+
+config.action_mailer.smtp_settings = {
+  :address   => "smtp.mandrillapp.com",
+  :port      => 2525,
+  :user_name => ENV["MANDRILL_USERNAME"],
+  :password  => ENV["MANDRILL_API_KEY"],
+  :enable_starttls_auto => true, # detects and uses STARTTLS
+  :authentication => 'plain', # Mandrill supports 'plain' or 'login'
+  :domain => 'localhost:3000', # your domain to identify your server when connecting
+}
 end

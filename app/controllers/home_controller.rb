@@ -7,4 +7,12 @@ class HomeController < ApplicationController
   		redirect_to(controller: 'boards', action: 'index')
    	end
   end
+
+  def about
+    
+  end
+
+  def contact
+
+  end
 end

@@ -1,0 +1,4 @@
+$(document).ready(function(){
+	$("#new_email_modal").html("<%= escape_javascript(render 'contacts/new') %>");
+	$("#new_email_modal").modal('show');
+});

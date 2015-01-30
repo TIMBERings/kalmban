@@ -1,0 +1,36 @@
+  <% unless @current_user %>
+    <div class="form-group">
+      <%= f.label :name,  class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, :required => true, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email,  class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_field :email, :required => true, class: 'form-control' %>
+      </div>
+    </div>
+  <% else %>
+<input type="hidden" name="contact[name]" value=<%= "#{@current_user.first_name} #{@current_user.last_name}" %> />
+<input type="hidden" name="contact[email]" value=<%= "#{@current_user.email}" %> />
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :reason,  class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.radio_button :reason, 'Technical Issue', class: 'radio' %>
+      <%= f.label :technical_issue, class: 'radio_label' %><br>
+      <%= f.radio_button :reason, 'Suggestions', class: 'radio' %>
+      <%= f.label :suggestions, class: 'radio_label'  %><br>
+      <%= f.radio_button :reason, "Other", :checked => true, class: 'radio' %>
+    <%= f.label :other, class: 'radio_label'  %>
+</div>
+  </div>
+  <div class="form-group">
+    <%= f.label :message,  class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_area :message, :as => :text, :required => true %>
+      </div>
+  </div>
+

@@ -1,10 +1,4 @@
 <% unless current_user %>
   <%= link_to('', "/auth/google_oauth2", class: "google sign_in")%>
    <%= link_to('', "/auth/facebook", class: "facebook sign_in")%>
-
-   <fb:login-button scope="public_profile,email" onlogin="fblogin();">
-</fb:login-button> 
-
-<div id="status">
-</div>
 <% end %>

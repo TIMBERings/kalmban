@@ -1,0 +1,4 @@
+$(document).ready(function(){
+	$("#about_modal").html("<%= escape_javascript(render 'home/about') %>");
+	$("#about_modal").modal('show');
+});

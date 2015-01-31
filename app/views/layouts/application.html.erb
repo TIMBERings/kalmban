@@ -51,13 +51,14 @@
       <div id="footer_links">
         <span id='copyright'>&copy; 2015</span>
         <span><%= link_to('Contact', {controller: 'contacts', action: 'new'}, {id: 'contact', :remote => true, 'data-target' => '#new_email_modal'} ) %></span>
-        <span><%= link_to('About', {controller: 'home', action: 'about'}, id: 'about') %></span>
+        <span><%= link_to('About', {controller: 'home', action: 'about'}, {id: 'about', :remote => true, 'data-target' => '#about_modal'} ) %></span>
         <span><%= link_to('Home', {controller: 'home', action: 'show'}, id: 'home' ) %></span>
       </div>
 
     </div>
 
     <div id="new_email_modal" class="modal fade" role="dialog" aria-labelledby="new_email_modal_label" aria-hidden="true"></div>
+    <div id="about_modal" class="modal fade" role="dialog" aria-labelledby="about_modal_label" aria-hidden="true"></div>
 
   </body>
 </html>

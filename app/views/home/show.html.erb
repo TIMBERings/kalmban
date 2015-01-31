@@ -1,4 +1,9 @@
 <% unless current_user %>
+
+<div id='intro_text'><p>Welcome to Kalmban!  Kalmban is a tool to help reduce the stress in your life by keeping your tasks organized.</p>
+ </div>
+<div class="login_links">
   <%= link_to('', "/auth/google_oauth2", class: "google sign_in")%>
    <%= link_to('', "/auth/facebook", class: "facebook sign_in")%>
+   </div>
 <% end %>

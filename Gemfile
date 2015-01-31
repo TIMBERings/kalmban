@@ -42,8 +42,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'omniauth-oauth2', '1.2.0'
 gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
 gem 'mail_form'
 gem 'simple_form'
 

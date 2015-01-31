@@ -1,3 +1,4 @@
 <% unless current_user %>
-	<%= link_to('', "/auth/google_oauth2", class: "sign_in")%>
+  <%= link_to('', "/auth/google_oauth2", class: "google sign_in")%>
+   <%= link_to('', "/auth/facebook", class: "facebook sign_in")%>
 <% end %>

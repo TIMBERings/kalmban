@@ -7,15 +7,4 @@ class HomeController < ApplicationController
   		redirect_to(controller: 'boards', action: 'index')
    	end
   end
-
-  def about
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  def contact
-
-  end
 end

@@ -58,16 +58,23 @@
 
     <div id="footer">
       <div id="footer_links">
-        <span id='copyright'>&copy; 2015</span>
+        <span id='copyright'>&copy; 2015 Aaron Humerickhouse</span>
+        <span><%= link_to('Privacy Policy', '#', {id: 'privacy', :remote => true, 'data-toggle'=>'modal', 'data-target' => '#privacy_modal'} ) %></span>
         <span><%= link_to('Contact', {controller: 'contacts', action: 'new'}, {id: 'contact', :remote => true, 'data-target' => '#new_email_modal'} ) %></span>
-        <span><%= link_to('About', {controller: 'home', action: 'about'}, {id: 'about', :remote => true, 'data-target' => '#about_modal'} ) %></span>
+        <span><%= link_to('About', '#', {id: 'about', :remote => true, 'data-toggle'=>'modal', 'data-target' => '#about_modal'} ) %></span>
         <span><%= link_to('Home', {controller: 'home', action: 'show'}, id: 'home' ) %></span>
       </div>
 
     </div>
 
     <div id="new_email_modal" class="modal fade" role="dialog" aria-labelledby="new_email_modal_label" aria-hidden="true"></div>
-    <div id="about_modal" class="modal fade" role="dialog" aria-labelledby="about_modal_label" aria-hidden="true"></div>
+
+    <div id="about_modal" class="modal fade" role="dialog" aria-labelledby="about_modal_label" aria-hidden="true">
+      <%= render partial: 'about' %>
+    </div>
+    <div id="privacy_modal" class="modal fade" role="dialog" aria-labelledby="privacy_modal_label" aria-hidden="true">
+      <%= render partial: 'privacy' %>
+    </div>
 
   </body>
 </html>

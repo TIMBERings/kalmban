@@ -1,6 +1,11 @@
 <% unless current_user %>
 
-<div id='intro_text'><p>Welcome to Kalmban!  Kalmban is a tool to help organize your life by tracking your tasks.</p>
+<div id='intro_text'>
+<p><strong>Welcome to Kalmban.</strong>  Kalmban is a tool to help organize your life by tracking your tasks.</p>
+
+<p>Create a board for any aspect of your life, be it work, home, or play.  From there you can click on the title to navigate into your board and start creating tasks.  When a task is started, move it over to 'In Progress'.  You can do this either by dragging it into the next column or clicking edit and changing it.  When you finish a task move it to 'Completed'.  If your 'Completed' list is too long, you can delete the tasks by clicking the 'x' and confirming.  This can be done with any task or board in any stage.</p>
+
+<p>Please create an account or login with your Google or Facebook account.</p>
  </div>
 <div class="login_links">
   <%= link_to('', "/auth/google_oauth2", class: "google sign_in")%>

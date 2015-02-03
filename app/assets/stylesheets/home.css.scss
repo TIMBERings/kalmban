@@ -3,7 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #intro_text {
-	text-align: center;
+	text-align: left;
+	display: inline-block;
+	width: 60%;
+}
+
+.login_links {
+		display: inline-block;
+		width:39%;
 }
 
 .sign_in {

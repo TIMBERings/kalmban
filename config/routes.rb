@@ -1,15 +1,44 @@
 Rails.application.routes.draw do
   
 
+  scope module: 'api' do
+    scope '/api' do
+    scope '/users' do
+    end
+    
+    scope '/boards' do
+      get '/' => 'boards#index'
+      post '/' => 'boards#create'
+      scope '/:board_id' do
+        get '/' => 'boards#show'
+        put '/' => 'boards#update'
+        delete '/' => 'boards#destroy'
 
-    get 'auth/:provider/callback', to: 'sessions#create'
-    get 'auth/failure', to: redirect('/')
-    get 'signout', to: 'sessions#destroy', as: 'signout'
+        scope '/tasks' do
+          get '/' => 'tasks#index'
+          post '/' => 'tasks#create'
+          scope '/:task_id' do
+            get '/' => 'tasks#show'
+            put '/' => 'tasks#update'
+            delete '/' => 'tasks#destroy'
+          end
+        end
+      end
+    end
+  end
+end
 
-    resources :sessions, only: [:create, :destroy]
-    resource :home, only: [:show]
+  root to: "home#show"
 
-    root to: "home#show"
+  devise_for :api_users
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
+
 
   get 'contact', to: 'contacts#new', as: 'contact'
   resources "contacts", only: [:new, :create]
@@ -39,6 +68,11 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

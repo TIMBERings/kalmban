@@ -4,9 +4,5 @@
   <div class="description"><%= board.description != nil ? "#{board.description}" : board.title %></div> 
   <div style='text-align:right;'>
    <%= link_to('Edit', {controller: 'boards', action: 'edit', id: board.id} , { remote: true,  'data-target' => '#edit_board_modal', class: 'btn btn-sm modal_link'} ) %>   
-
-
   </div>
-
-
 </div>

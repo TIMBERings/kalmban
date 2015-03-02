@@ -14,6 +14,9 @@
   <div class='col-lg-4 status_column'><h3 class="status_title">To Do</h3>
     <div class='status'>
     <ul class="list-unstyled status_list" data-status="to_do" id="to_do_status">
+      <% if @tasks.to_do.empty? %>
+        <li id='To_Do-filler-task' class='filler_task'></li>
+      <% end %>
         <% @tasks.sorted.to_do.each do |task| %>
           <%= content_tag_for(:li, task) do %> 
             <%= render(partial: 'task_div', locals: {task: task}) %>
@@ -26,6 +29,10 @@
   <div class='col-lg-4 status_column'><h3 class="status_title">In Progress</h3>
     <div class='status'>
       <ul class="list-unstyled status_list" data-status="in_progress" id="in_progress_status">
+      <% if @tasks.in_progress.empty? %>
+        <li id='In_Progress-filler-task' class='filler_task'></li>
+      <% end %>
+
         <% @tasks.sorted.in_progress.each do |task| %>
           <%= content_tag_for(:li, task) do %> 
             <%= render(partial: 'task_div', locals: {task: task}) %>
@@ -37,6 +44,9 @@
   <div class='col-lg-4 status_column'><h3 class="status_title">Completed</h3>
     <div class='status'>
       <ul class="list-unstyled status_list" data-status="completed" id="completed_status">
+      <% if @tasks.complete.empty? %>
+        <li id='Completed-filler-task' class='filler_task'></li>
+      <% end %>
         <% @tasks.sorted.complete.each do |task| %>
           <%= content_tag_for(:li, task) do %> 
             <%= render(partial: 'task_div', locals: {task: task}) %>

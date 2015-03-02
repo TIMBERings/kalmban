@@ -1,6 +1,8 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+var initialColumn;
+
 $(document).ready(function() {	
 	$("#to_do_status, #in_progress_status, #completed_status").sortable({
 		connectWith: 'ul',	
@@ -9,12 +11,17 @@ $(document).ready(function() {
 		opacity: 0.4,
 		scroll: true,
 
-		receive: function(event, ui){
+		activate: function(event, ui) {
+			initialColumn = ui.item.parent('.status_list');
+		},
+
+		receive: function(event, ui) {
 			$.ajax({
 				type: 'post',
 				data: {_method:'PUT',  task: {status: get_status($(ui.item.parent('.status_list')))}},
 				complete: function(request){},
 				url: 'tasks/' + ui.item.attr('id').split('_')[1]
+
 			}),
 
 			$.ajax({
@@ -26,6 +33,9 @@ $(document).ready(function() {
 				},
 				url: 'tasks/sort'
 			})
+
+			delete_empty_task(get_status($(ui.item.parent('.status_list'))));
+			add_empty_task(initialColumn)
 		}
 	})
 });
@@ -38,4 +48,15 @@ function capitalize_every_word(str) {
 	return str.replace(/\w\S*/g, function(txt){
 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 	});
+}
+function delete_empty_task(status) {
+	var fillerTaskId = '#'.concat(status).concat('-filler-task').replace(" ", "_");
+	$(fillerTaskId).remove();
+}
+
+function add_empty_task(column) {
+	if(column.children('.task').length == 0) {
+		var columnName = get_status(column);
+		column.append("<li id='" + columnName.replace(" ", "_") + "-filler-task' class='filler_task'></li>")
+	}
 }

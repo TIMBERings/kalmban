@@ -3,8 +3,8 @@
   <%= link_to(task.title, board_task_path(task.board, task), {class: 'show alignleft modal_link', :remote => true, 'data-target' => '#show_task_modal'})%>
   <br/>
   <div class="description">Description: <%= "#{task.description}" %></div> <br>
-  Due Date: <%= "#{task.due_date}" %> <br>
-  Completed Date: <%= "#{task.completed_date}" %> <br>
+  Due Date: <%= "#{friendly_date(task.due_date)}" %> <br>
+  Completed Date: <%= "#{friendly_date(task.completed_date)}" %> <br>
   <div style='text-align:right;'>
 	<%= link_to 'Edit', edit_board_task_path(task.board, task),  {class: 'btn btn-sm modal_link', :remote => true, 'data-target' => '#edit_task_modal'}  %>    
   </div>

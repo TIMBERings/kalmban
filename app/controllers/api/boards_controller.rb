@@ -1,20 +1,22 @@
-require_relative 'base_api_controller'
+require_relative 'base_controller'
 
-class Api::BoardsController < BaseApiController
-  def index
-    render :json => Board.all
-  end
+module Api
+  class BoardsController < Api::BaseController
+    def index
+      render :json => Board.all
+    end
 
-  def show
-    render :json => Board.find(params['board_id'])
-  end
+    def show
+      render :json => Board.find(params['board_id'])
+    end
 
-  def create
-  end
+    def create
+    end
 
-  def update
-  end
+    def update
+    end
 
-  def destroy
+    def destroy
+    end
   end
 end

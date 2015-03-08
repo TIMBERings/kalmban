@@ -1,25 +1,15 @@
-require_relative 'base_api_controller'
-class Api::TasksController < BaseApiController
-  before_action :find_board
-  def index
-    render :json => @board.tasks
-  end
+require_relative 'base_controller'
 
-  def show
-    render :json => @board.tasks.where(id: params[:task_id])
-  end
+module Api
+  class TasksController < Api::BaseController
+ 
+    def task_params
+      params.require(:task).permit(:position, :title, :board_id, :status, :description, :due_date, :completed_date)
 
-  def create
-  end
+    end
 
-  def update
-  end
-
-  def destroy
-  end
-private
-  def find_board
-    puts params.inspect
-    @board = Board.find(params[:board_id]) if params[:board_id]
+    def query_params
+      params.permit(:title, :board_id, :status, :description)
+    end
   end
 end

@@ -86,6 +86,9 @@ GEM
       railties (>= 3.2.16)
     json (1.8.2)
     jwt (1.2.1)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     libv8 (3.16.14.7)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
@@ -218,6 +221,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  kaminari
   mail_form
   mysql2
   newrelic_rpm

@@ -2,21 +2,12 @@ require_relative 'base_controller'
 
 module Api
   class BoardsController < Api::BaseController
-    def index
-      render :json => Board.all
+    def board_params
+      params.require(:board).permit(:title, :description, :user_id, :open, :position)
     end
 
-    def show
-      render :json => Board.find(params['board_id'])
-    end
-
-    def create
-    end
-
-    def update
-    end
-
-    def destroy
+    def query_params
+      params.permit(:user_id, :title, :description)
     end
   end
 end

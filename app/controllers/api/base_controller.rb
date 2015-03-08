@@ -1,7 +1,7 @@
 module Api
   class BaseController < ApplicationController
-
     protect_from_forgery with: :null_session
+    before_action :restrict_access
     before_action :set_resource, only: [:destroy, :show, :update]
     respond_to :json
 
@@ -23,7 +23,7 @@ module Api
     def index
       plural_resource_name = "@#{resource_name.pluralize}"
       resources = resource_class.where(query_params)
-                                .page(page-params[:page])
+                                .page(page_params[:page])
                                 .per(page_params[:page_size])
 
       instance_variable_set(plural_resource_name, resources)
@@ -73,7 +73,7 @@ module Api
     # The singular name for the resource class based on the controller
     # @return [String]
     def resource_name
-      @resource_name ||= self.controller_name.singularlize
+      @resource_name ||= self.controller_name.singularize
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -90,5 +90,12 @@ module Api
       resource ||= resource_class.find(params[:id])
       instance_variable_set("@#{resource_name}", resource)
     end
+  
+    def restrict_access
+      authenticate_or_request_with_http_token do |token, options|
+        ApiToken.exists?(access_token: token)
+      end
+    end
+
   end
 end

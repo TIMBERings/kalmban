@@ -1,36 +1,11 @@
 Rails.application.routes.draw do
   
 
-  scope module: 'api' do
-    scope '/api' do
-    scope '/users' do
-    end
-    
-    scope '/boards' do
-      get '/' => 'boards#index'
-      post '/' => 'boards#create'
-      scope '/:board_id' do
-        get '/' => 'boards#show'
-        put '/' => 'boards#update'
-        delete '/' => 'boards#destroy'
-
-        scope '/tasks' do
-          get '/' => 'tasks#index'
-          post '/' => 'tasks#create'
-          scope '/:task_id' do
-            get '/' => 'tasks#show'
-            put '/' => 'tasks#update'
-            delete '/' => 'tasks#destroy'
-          end
-        end
-      end
-    end
+  namespace :api do
+    resources :users, :boards, :tasks
   end
-end
 
   root to: "home#show"
-
-  devise_for :api_users
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   layout 'application'
 
-  before_action :current_user
+  before_action :current_user, :logged_in?
 
   def index
     puts "IN INDEX"
@@ -13,10 +13,10 @@ class BoardsController < ApplicationController
     end
   end
 
-  def show
-    @board = Board.find(params[:id])
-    permission_to_board?
-  end
+  # def show
+  #   @board = Board.find(params[:id])
+  #   permission_to_board?
+  # end
 
   def new
     @board = Board.new
@@ -91,7 +91,7 @@ def edit
   end
 
   def permission_to_board?
-    permission_denied if (!@board.nil?  && @board.user != @current_user)
+    permission_denied if (!@board.nil? && (@current_user.nil? || @board.user != @current_user))
   end
 
 end

@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def permission_denied
       render :file => "public/401.html", :status => :unauthorized
   end
+
+  def logged_in?
+    permission_denied unless @current_user
+  end
 end

@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   resources "contacts", only: [:new, :create]
 
 
-  resources :users do #, shallow: true do
-    member do
-      get :delete
-    end
-  end
+  # resources :users do #, shallow: true do
+  #   member do
+  #     get :delete
+  #   end
+  # end
 
   resources :boards, except: [:show] do
     collection do

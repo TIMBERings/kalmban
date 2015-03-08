@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::UsersControllerTest < ActionController::TestCase
+class Api::BoardsControllerTest < ActionController::TestCase
   test "should not get index without token" do
     get :index
     assert_response :unauthorized
@@ -25,4 +25,5 @@ class Api::UsersControllerTest < ActionController::TestCase
     get :destroy, id: 1
     assert_response :unauthorized
   end
+
 end

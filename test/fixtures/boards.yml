@@ -4,8 +4,43 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: 
+  id: 1
+  title: 'First Board'
+  description: 'Here is some random description for the first board.'
+  position: 1
+  user_id: 1
+  open: true
+  created_at: '2015-01-31 03:18:20'
+  updated_at: '2015-01-31 03:18:20'
 # column: value
 #
-two: {}
+two: 
+  id: 2
+  title: 'Empty Board'
+  description: 'Here is some random description for the empty board.'
+  position: 2
+  user_id: 1
+  open: true
+  created_at: '2015-01-31 03:18:20'
+  updated_at: '2015-01-31 03:18:20'
 #  column: value
+three: 
+  id: 3
+  title: 'Third Board'
+  description: 'Here is some random description for the third board.'
+  position: 2
+  user_id: 2
+  open: true
+  created_at: '2015-01-31 03:18:20'
+  updated_at: '2015-01-31 03:18:20'
+
+four:
+  id: 4
+  title: 'Closed Board'
+  description: 'Here is some random description for the closed board.'
+  position: 1
+  user_id: 2
+  open: false
+  created_at: '2015-01-31 03:18:20'
+  updated_at: '2015-01-31 03:18:20'

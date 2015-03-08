@@ -91,6 +91,7 @@ module Api
       instance_variable_set("@#{resource_name}", resource)
     end
   
+    #Authorization: Token token="<TOKEN>"
     def restrict_access
       authenticate_or_request_with_http_token do |token, options|
         ApiToken.exists?(access_token: token)

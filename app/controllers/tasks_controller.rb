@@ -1,11 +1,9 @@
 class TasksController < ApplicationController
   before_action :find_board
-  before_action :current_user
+  before_action :current_user, :logged_in?
 
   def index
       @tasks = @board.tasks
-      logger.debug "board.user = #{@board.user.id}"
-      logger.debug "current_user = #{@current_user.id}"
       permission_denied if (@board.user != @current_user)
   end
 
